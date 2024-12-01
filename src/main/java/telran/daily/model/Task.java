@@ -8,7 +8,10 @@ import java.time.ZoneId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,8 +23,8 @@ import lombok.Setter;
 @Getter
 @EqualsAndHashCode(of = "id")
 @Entity
-//@Table
-public class TaskEntity implements Serializable {
+@Table(name = "tasks")
+public class Task implements Serializable {
 	/**
 	 * 
 	 */
@@ -30,11 +33,12 @@ public class TaskEntity implements Serializable {
 	Long id;
 	String title;
 	String description;
+	
 	LocalDateTime completedDate;
 	LocalDateTime createdDateTime;
 	LocalDateTime updatedDateTime;
 
-	public TaskEntity(String title, String description, LocalDateTime completedDate) {
+	public Task(String title, String description, LocalDateTime completedDate) {
 		super();
 		this.title = title;
 		this.description = description;
